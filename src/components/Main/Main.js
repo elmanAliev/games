@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from "react";
 import classes from './Main.module.css'
 import Card from './Card/Card'
-import api from '../../utils/api';
 
-function Main() {
 
-  const [cards, setCards] = useState([]);
+function Main({cards}) {
 
-  useEffect(() => {
-    api.getGames()
-      .then((cardsArray) => {
-        setCards([...cardsArray.results]);
-      })
-      .catch((err) => {
-          console.log(`Невозможно отобразить карточки с сервера ${err}`);
-      })
-  }, [])
+  
 
   return (
     <div className={classes.container}>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+      {cards.map((card) => {
+        return <Card
+          image={card.background_image}
+          name={card.name}
+          rating={card.rating}
+          released={card.released}
+          card={card}
+          key={card.id}
+        />
+      })}
     </div>
   );
 }
