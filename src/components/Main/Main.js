@@ -11,7 +11,6 @@ function Main() {
     api.getGames()
       .then((cardsArray) => {
         setCards([...cardsArray.results]);
-        console.log(cards)
       })
       .catch((err) => {
           console.log(`Невозможно отобразить карточки с сервера ${err}`);
