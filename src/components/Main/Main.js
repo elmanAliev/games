@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import classes from './Main.module.css'
 import Card from './Card/Card'
 
 
-function Main({cards}) {
+function Main({ cards, onCardClick }) {
 
   return (
     <div className={classes.container}>
@@ -15,6 +15,8 @@ function Main({cards}) {
           released={card.released}
           card={card}
           key={card.id}
+          id={card.id}
+          onCardClick={onCardClick}
         />
       })}
     </div>

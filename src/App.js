@@ -1,11 +1,13 @@
 import './App.css';
-import React, { useState, useEffect, useMemo } from "react";
 import Header from './components/Header/Header';
+import React, { useState, useEffect, useMemo } from "react";
 import Main from './components/Main/Main';
+import Game from './components/Game/Game';
 import Select from './components/UI/Select/Select';
 import Search from './components/UI/Search/Search';
 import Loader from './components/UI/Loader/Loader';
 import api from './utils/api';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const [cardsApi, setCardsApi] = useState([]);
@@ -17,6 +19,7 @@ function App() {
   const [fetching, setFetching] = useState(false);
   const [nextPage, setNextPage] = useState('');
 
+  // Карточки с сервера
   useEffect(() => {
     setIsCardsLoading(true)
     api.getGames()
@@ -34,6 +37,7 @@ function App() {
     setCards([...cardsApi])
   }, [cardsApi]);
 
+  // Пагинация (бесконечный скролл) 
   useEffect(() => {
     document.addEventListener('scroll', handleScroll);
     return function () {
@@ -66,13 +70,14 @@ function App() {
           setIsCardsLoading(false);
         })
     }
-
   }, [fetching]);
 
+  // Поиск по названию
   const sortedAndSearchedCards = useMemo(() => {
     return cards.filter(card => card.name.toLowerCase().includes(searchQuery))
   }, [searchQuery, cards])
 
+  // Сортировка по рейтингу и дате релиза игры (в обе стороны)
   function sortCards(sort) {
     setSelectedSort(sort);
     if (sort == 'По убыванию рейтинга') {
@@ -86,6 +91,7 @@ function App() {
     }
   }
 
+  // Фильтрация по платформам
   function filterCards(filter) {
     setSelectedFilter(filter);
     if (filter == 'All') return setCards([...cardsApi]);
@@ -125,7 +131,11 @@ function App() {
           onChange={e => setSearchQuery(e.target.value)}
         />
       </div>
-      <Main cards={sortedAndSearchedCards} />
+      <Routes>
+        <Route path="/" element={<Main cards={sortedAndSearchedCards} />} />
+        <Route path="/:id" element={<Game cards={sortedAndSearchedCards} />} />
+      </Routes>
+
       {isCardsLoading &&
         <div className="loader-container"><Loader /></div>
       }

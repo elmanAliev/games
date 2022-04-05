@@ -1,9 +1,11 @@
 import React from "react";
-import classes from './Card.module.css'
+import classes from './Card.module.css';
+import { Link } from 'react-router-dom';
 
-function Card({ image, name, rating, released }) {
+function Card({ image, name, rating, released, card, onCardClick, id }) {
+
   return (
-    <div className={classes.card}>
+    <Link to={`/${id}`} className={classes.card}>
       <img className={classes.poster} src={image} alt={name} />
       <div className={classes.description}>
         <h2 className={classes.name}>{name}</h2>
@@ -12,7 +14,7 @@ function Card({ image, name, rating, released }) {
           <p className={classes.rating}>{rating}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

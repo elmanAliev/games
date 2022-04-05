@@ -4,7 +4,8 @@
    overflow: hidden;
    cursor: pointer;
    transition: all 0.1s linear;
-   
+   color: #d5d5d5;
+   text-decoration: none;
 }
 
 .card:hover {
