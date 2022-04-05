@@ -3,7 +3,7 @@ import classes from './Select.module.css'
 
 function Select({ options, defaultValue, value, onChange }) {
   return (
-    <div className={classes.container}>
+    
       <select 
         className={classes.select}
         value={value}
@@ -16,7 +16,7 @@ function Select({ options, defaultValue, value, onChange }) {
           </option>
         )}
       </select>
-    </div>
+    
   );
 }
 

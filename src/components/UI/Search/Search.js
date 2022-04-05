@@ -3,9 +3,9 @@ import classes from './Search.module.css'
 
 function Search({ value, onChange }) {
   return (
-    <div className={classes.container}>
-      <input value={value} onChange={onChange} type="text" placeholder="Поиск"/>
-    </div>
+    
+      <input className={classes.input} value={value} onChange={onChange} type="text" placeholder="Поиск"/>
+    
   );
 }
 

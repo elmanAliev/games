@@ -5,8 +5,6 @@ import Card from './Card/Card'
 
 function Main({cards}) {
 
-  
-
   return (
     <div className={classes.container}>
       {cards.map((card) => {
