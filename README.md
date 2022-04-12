@@ -25,7 +25,7 @@
 
 2. Установить зависимости
 
-    `cd mesto`
+    `cd games`
     
     `npm install`
 
