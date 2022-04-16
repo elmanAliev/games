@@ -70,7 +70,7 @@ function App() {
           setIsCardsLoading(false);
         })
     }
-  }, [fetching]);
+  }, [fetching, cardsApi, nextPage]);
 
   // Поиск по названию
   const sortedAndSearchedCards = useMemo(() => {

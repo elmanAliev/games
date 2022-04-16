@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Game({ cards }) {
 
   const { id } = useParams();
-  const game = cards.find(card => card.id == id);
+  const game = cards.find(card => card.id === +id);
 
   return (
     <>
