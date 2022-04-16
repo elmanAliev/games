@@ -80,11 +80,11 @@ function App() {
   // Сортировка по рейтингу и дате релиза игры (в обе стороны)
   function sortCards(sort) {
     setSelectedSort(sort);
-    if (sort == 'По убыванию рейтинга') {
+    if (sort === 'По убыванию рейтинга') {
       setCards([...cards].sort((a, b) => b.rating - a.rating));
-    } else if (sort == 'По возрастанию рейтинга') {
+    } else if (sort === 'По возрастанию рейтинга') {
       setCards([...cards].sort((a, b) => a.rating - b.rating));
-    } else if (sort == 'По убыванию даты релиза') {
+    } else if (sort === 'По убыванию даты релиза') {
       setCards([...cards].sort((a, b) => new Date(b.released) - new Date(a.released)));
     } else {
       setCards([...cards].sort((a, b) => new Date(a.released) - new Date(b.released)));
@@ -94,8 +94,8 @@ function App() {
   // Фильтрация по платформам
   function filterCards(filter) {
     setSelectedFilter(filter);
-    if (filter == 'All') return setCards([...cardsApi]);
-    setCards([...cardsApi].filter(a => a.platforms.some(b => b.platform.name == filter)));
+    if (filter === 'All') return setCards([...cardsApi]);
+    setCards([...cardsApi].filter(a => a.platforms.some(b => b.platform.name === filter)));
   }
 
   return (
