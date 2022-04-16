@@ -13,10 +13,8 @@ function Main({ cards, onCardClick }) {
           name={card.name}
           rating={card.rating}
           released={card.released}
-          card={card}
           key={card.id}
           id={card.id}
-          onCardClick={onCardClick}
         />
       })}
     </div>

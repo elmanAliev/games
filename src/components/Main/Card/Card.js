@@ -2,7 +2,7 @@ import React from "react";
 import classes from './Card.module.css';
 import { Link } from 'react-router-dom';
 
-function Card({ image, name, rating, released, card, onCardClick, id }) {
+function Card({ image, name, rating, released, id }) {
 
   return (
     <Link to={`/${id}`} className={classes.card}>
